@@ -80,7 +80,9 @@ class Thread(models.Model):
                     search_params.pop('commentable_id', None)
                 response = forum_api.search_threads(**search_params)
             else:
+                logging.info("Parameters for forum:%s",params)
                 response = forum_api.get_user_threads(**params)
+                
         else:
             response = utils.perform_request(
                 'get',
